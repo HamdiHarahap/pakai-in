@@ -1,59 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Pakai-in — E-Commerce Pakaian Modern
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Pakai-in** adalah aplikasi e-commerce berbasis web yang berfokus pada penjualan pakaian **pria, wanita, dan anak-anak**.  
+Aplikasi ini dirancang dengan pengalaman pengguna yang modern, alur transaksi yang jelas, serta sistem manajemen admin yang terstruktur dan mudah digunakan.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Fitur Pengguna (Customer)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Pengguna dapat berbelanja dengan alur yang sederhana dan nyaman:
 
-## Learning Laravel
+-   **Menjelajah Produk**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+    -   Melihat seluruh koleksi pakaian
+    -   Filter produk berdasarkan kategori (Pria, Wanita, Anak-anak)
+    -   Melihat detail produk (deskripsi, harga, gambar, ukuran tersedia)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **Keranjang Belanja**
 
-## Laravel Sponsors
+    -   Menambahkan produk ke keranjang
+    -   Mengatur jumlah (qty) dan ukuran (size)
+    -   Menghapus item dari keranjang
+    -   Melihat subtotal dan total harga
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   **Checkout & Pembayaran**
 
-### Premium Partners
+    -   Pilihan metode pembayaran:
+        -   **Cash On Delivery (COD)**
+        -   **Transfer Bank (Midtrans Payment Gateway)**
+    -   Untuk **COD**:
+        -   Pesanan langsung dibuat
+    -   Untuk **Transfer**:
+        -   Proses pembayaran melalui **Midtrans**
+        -   Pesanan akan tersimpan dengan status _unpaid_
+        -   Pesanan dapat diselesaikan setelah pembayaran berhasil
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **Pesanan Saya**
+    -   Melihat daftar pesanan yang pernah dibuat
+    -   Melihat detail pesanan (item, ukuran, qty, total harga)
+    -   Status pesanan dan pembayaran ditampilkan dengan jelas
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Fitur Admin
 
-## Code of Conduct
+Admin memiliki kontrol penuh terhadap sistem dan transaksi:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   **Manajemen Master Data**
 
-## Security Vulnerabilities
+    -   Kelola **kategori produk**
+    -   Kelola **produk** (nama, harga, deskripsi, gambar)
+    -   Kelola **stok produk** berdasarkan ukuran (S, M, L, XL)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   **Data Customer**
 
-## License
+    -   Melihat daftar pengguna terdaftar
+    -   Informasi customer yang melakukan transaksi
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   **Keranjang Customer**
+
+    -   Melihat isi keranjang milik customer
+    -   Detail item: produk, ukuran, jumlah, dan subtotal
+
+-   **Pesanan Customer**
+    -   Melihat seluruh pesanan yang dibuat customer
+    -   Melihat detail isi pesanan:
+        -   Produk
+        -   Ukuran
+        -   Quantity
+        -   Total harga
+    -   Memantau status pesanan dan pembayaran
+
+---
+
+## Integrasi Payment Gateway
+
+Pakai-in terintegrasi dengan **Midtrans** untuk metode pembayaran transfer:
+
+-   Mendukung pembayaran non-COD secara aman
+-   Status pembayaran otomatis terupdate
+-   Pesanan tersimpan hingga pembayaran berhasil
+-   Cocok untuk skenario pembayaran tertunda
+
+---
+
+## Desain & User Experience
+
+-   Tampilan **modern dan minimalis**
+-   Konsisten menggunakan **Tailwind CSS**
+-   Fokus pada:
+    -   Kemudahan navigasi
+    -   Kejelasan status transaksi
+    -   Kenyamanan pengguna
+
+---
+
+## Teknologi yang Digunakan
+
+-   **Framework**: Laravel
+-   **Database**: MySQL
+-   **Frontend**: Blade + Tailwind CSS
+-   **Payment Gateway**: Midtrans
+
+---
+
+## Keunggulan Project
+
+-   Alur checkout yang jelas dan fleksibel
+-   Mendukung pembayaran COD & Transfer
+-   Sistem admin yang lengkap dan terstruktur
+-   Manajemen stok berbasis ukuran
+-   Cocok untuk skala UMKM hingga menengah
+-   Kode terorganisir dan mudah dikembangkan
+
+---
+
+## Catatan Pengembangan
+
+Project **Pakai-in** dirancang agar mudah dikembangkan ke depannya, seperti:
+
+-   Notifikasi status pesanan
+-   Dashboard analitik penjualan
+-   Fitur wishlist
+-   Pengiriman dengan kurir terintegrasi
+
+---
+
+**Pakai-in**  
+E-Commerce Pakaian Modern  
+Dikembangkan untuk kebutuhan pembelajaran & pengembangan sistem e-commerce.
+
+---
+
+_Belanja pakaian jadi lebih mudah, cepat, dan aman bersama Pakai-in._
