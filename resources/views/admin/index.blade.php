@@ -17,7 +17,7 @@
                     Total Produk
                 </p>
                 <h3 class="text-3xl font-semibold text-slate-900 mt-3">
-                    {{ $totalProducts ?? 0 }}
+                    {{ $countProduct ?? 0 }}
                 </h3>
             </div>
             <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition">
@@ -25,7 +25,7 @@
                     Total Kategori
                 </p>
                 <h3 class="text-3xl font-semibold text-slate-900 mt-3">
-                    {{ $totalCategories ?? 0 }}
+                    {{ $countCategory ?? 0 }}
                 </h3>
             </div>
             <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition">
@@ -33,7 +33,7 @@
                     Total Customer
                 </p>
                 <h3 class="text-3xl font-semibold text-slate-900 mt-3">
-                    {{ $totalCustomers ?? 0 }}
+                    {{ $countCustomer ?? 0 }}
                 </h3>
             </div>
             <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition">
@@ -41,17 +41,51 @@
                     Total Pesanan
                 </p>
                 <h3 class="text-3xl font-semibold text-slate-900 mt-3">
-                    {{ $totalOrders ?? 0 }}
+                    {{ $countOrder ?? 0 }}
                 </h3>
             </div>
         </div>
         <div class="my-12 border-t border-slate-200"></div>
-        <div>
-            <h2 class="text-lg font-medium text-slate-900 mb-4">
+         <div>
+            <h2 class="text-lg font-semibold text-slate-900 mb-4">
                 Pesanan Terbaru
             </h2>
-            <div class="bg-white border border-slate-200 rounded-2xl p-6 text-sm text-slate-500">
-                Belum ada data pesanan terbaru.
+
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                @if ($lastOrders->count())
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-50 text-slate-600">
+                            <tr>
+                                <th class="px-6 py-4 text-left">Kode Order</th>
+                                <th class="px-6 py-4 text-left">Customer</th>
+                                <th class="px-6 py-4 text-left">Total Item</th>
+                                <th class="px-6 py-4 text-left">Tanggal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            @foreach ($lastOrders as $order)
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-6 py-4 font-medium text-slate-900">
+                                        {{ $order->order_code }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $order->user->name ?? '-' }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $order->items->count() }} item
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-500">
+                                        {{ $order->created_at->format('d M Y') }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="p-8 text-center text-slate-500">
+                        Belum ada pesanan terbaru
+                    </div>
+                @endif
             </div>
         </div>
     </section>

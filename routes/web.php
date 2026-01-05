@@ -61,11 +61,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
         Route::delete('/keranjang/{id}', [CartItemController::class, 'destroy'])->name('item.destroy');
 
+        Route::get('/pesanan-saya', [PageController::class, 'orderPage'])->name('myOrder.index');
+
         Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
         Route::get('/checkout/payment/{order_code}', [OrderController::class, 'payment'])->name('checkout.payment');
-        Route::get('/order/success/{order_code}', function ($order_code) {
-            return view('user.checkout.success', compact('order_code'));
-        })->name('order.success');
+        Route::get('/order/success/{order_code}', [OrderController::class, 'orderSuccess'])->name('order.success');
     });
     
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

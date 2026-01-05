@@ -13,7 +13,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 <div class="min-h-screen flex">
-    <aside class="w-72 bg-white border-r border-slate-200 px-6 py-8 hidden md:flex flex-col">
+    <aside class="w-72 bg-white border-r border-slate-200 px-6 py-8 hidden md:flex flex-col fixed z-50 h-full">
         <div class="mb-12">
             <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
                 Pakai<span class="text-emerald-600">-in</span>
@@ -78,7 +78,7 @@
         </div>
     </aside>
     <main class="flex-1 flex flex-col">
-        <header class="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-20">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between fixed w-full top-0 z-20 ps-82">
             <h2 class="text-lg font-semibold text-slate-900 hidden md:block">
                 {{ $title }}
             </h2>
@@ -113,7 +113,7 @@
                 </div>
             </div>
         </header>
-        <div class="flex-1">
+        <div class="flex-1 ps-72 py-20">
             {{ $slot }}
         </div>
     </main>

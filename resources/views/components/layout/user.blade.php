@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-10">
-                    <span class="text-2xl font-bold tracking-wide">Pakai<span class="text-emerald-600">-in</span></span>
+                    <a href="{{ route('index') }}" class="text-2xl font-bold tracking-wide">Pakai<span class="text-emerald-600">-in</span></a>
                     <nav class="hidden md:flex space-x-4 text-sm font-medium">
                         <a href="{{ route('index') }}" class="hover:text-emerald-600">Beranda</a>
                         <a href="{{ route('collection.index') }}" class="hover:text-emerald-600">Koleksi</a>
@@ -36,16 +36,16 @@
                             <button id="userMenuButton" class="flex items-center space-x-2 text-sm font-semibold hover:text-emerald-600 focus:outline-none">
                                 <span>Hai, {{$user->name}}</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                            </button>
+                            </button>   
                             <div id="userMenu" class="hidden absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg border">
-                                <a href="#" class="block px-4 py-3 text-sm hover:bg-gray-100">Pesanan Saya</a>
+                                <a href="{{ route('myOrder.index') }}" class="block px-4 py-3 text-sm hover:bg-gray-100">Pesanan Saya</a>
                                 <div class="border-t"></div>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button 
                                         type="button"
                                         onclick="confirmLogout()"
-                                        class="w-full text-left px-4 py-2 text-red-600"
+                                        class="w-full text-left text-sm px-4 py-2 text-red-600 hover:text-red-800"
                                     >
                                         Logout
                                     </button>

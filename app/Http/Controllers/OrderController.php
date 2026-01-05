@@ -60,7 +60,7 @@ class OrderController extends Controller
                 'total_price' => $totalPrice,
                 'shipping_price' => $shippingPrice,
                 'payment_method' => $request->payment_method,
-                'payment_status' => 'pending',
+                'payment_status' => 'unpaid',
                 'order_status' => 'pending',
                 'address' => $request->address,
             ]);
@@ -96,8 +96,7 @@ class OrderController extends Controller
         );
     }
 
-
-    public function payment($order_code)
+    public function payment(String $order_code)
     {
         $order = Order::where('order_code', $order_code)
             ->where('user_id', Auth::user()->id)
@@ -121,6 +120,22 @@ class OrderController extends Controller
         $snapToken = Snap::getSnapToken($params);
 
         return view('user.checkout.payment', compact('order', 'snapToken'));
+    }
+
+    public function orderSuccess(String $order_code)
+    {
+        $data = Order::with(['items', 'user'])->where('order_code', $order_code)->where('user_id', Auth::user()->id)->first();
+
+        if($data->payment_status == 'paid') {
+            return view('user.checkout.success', [  
+                'title' => 'Pesanan Sukses',
+                'data' => $data
+            ]);
+        }
+
+        if($data->payment_status == 'unpaid') {
+            return redirect()->route('checkout.payment', ['order_code' => $order_code]);
+        }
     }
 
 }

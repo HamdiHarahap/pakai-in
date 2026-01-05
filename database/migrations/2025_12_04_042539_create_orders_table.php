@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->decimal('total_price', 12, 2);
                 $table->decimal('shipping_price', 12, 2);
                 $table->enum('payment_method', ['transfer', 'cod']);
-                $table->enum('payment_status', ['pending','paid','failed']);
+                $table->enum('payment_status', ['unpaid','paid','failed']);
                 $table->enum('order_status', ['pending','processing','shipped','completed','cancelled']);
                 $table->text('address');
                 $table->timestamps();

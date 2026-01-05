@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -62,6 +64,20 @@ class PageController extends Controller
     {
         return view('user.cart.index', [
             'title' => 'Keranjang',
+        ]);
+    }
+
+    public function orderPage()
+    {
+        $data = Order::with(['items', 'user'])
+            ->where('user_id', Auth::user()->id)
+            ->orderBy('payment_status')     
+            ->orderByDesc('created_at')     
+            ->get();
+
+        return view('user.order.index', [
+            'title' => 'Pesanan Saya',
+            'data' => $data
         ]);
     }
 }
