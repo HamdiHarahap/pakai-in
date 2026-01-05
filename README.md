@@ -9,7 +9,15 @@ Aplikasi ini dirancang dengan pengalaman pengguna yang modern, alur transaksi ya
 
 ### Demo Pengguna
 
+
+https://github.com/user-attachments/assets/0d1f2eee-06cb-42dc-a848-8887be5b6164
+
+
 ### Demo Admin
+
+
+https://github.com/user-attachments/assets/b529cd98-6187-43c1-ab06-a619151217ad
+
 
 ---
 
